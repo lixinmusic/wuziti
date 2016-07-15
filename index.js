@@ -17,7 +17,88 @@ for (var i = 0; i < 15; i++) {
 			  .data('pos',{x:i,y:j})
 		  .appendTo('.qipan')
 		};
-	};	
+	}
+
+
+	//加开关
+	var kaiguan=true;
+	var hei={};
+	var bai={};
+	var isAi;
+	$('.renji').on('click',function(){
+		isAi=true;
+	})
+	$('.renren').on('click',function(){
+		isAi=false;
+	})
+
+
+	var ai=function(){
+		var zuobiao;
+		var max=-Infinity;
+		for(var i in kongbai){
+			var weixie=panduan(kongbai[i],hei);
+			if(weixie>max){
+				max=weixie;
+				zuobiao=kongbai[i];
+			}
+		}
+		var zuobiao2;
+		var max2=-Infinity;
+		for(var i in kongbai){
+			var weixie=panduan(kongbai[i],bai);
+			if(weixie>max2){
+				max2=weixie;
+				zuobiao2=kongbai[i];
+			}
+		}
+		return (max>max2)?zuobiao:zuobiao2;
+
+
+	}
+	//给每个棋子添加点击事件
+	$('.qipan .qizi').on('click',function(){
+		audio.src="5390.mp3";
+		audio.play();
+		//不要让后面的棋子覆盖住以放的棋子
+		if($(this).hasClass('hai')||$(this).hasClass('hei')){
+			return;
+		}
+		var pos=$(this).data('pos');
+		if(kaiguan) {
+			$(this).addClass('hei');
+			hei[pos.x + '-' + pos.y] = true;
+			delete kongbai[join(pos.x,pos.y)];
+			if (panduan(pos, hei) >= 5) {
+				alert('heiqiying');
+				isAi=false;
+				$('.qipan .qizi').off('click');
+			}
+			if (isAi) {
+				var pos = ai();
+				$('#' + join(pos.x, pos.y))
+					.addClass('bai');
+				bai[join(pos.x, pos.y)] = true;
+				delete kongbai[join(pos.x, pos.y)];
+				if (panduan(pos, bai) >= 5) {
+					alert('baiqi ying');
+					$('.qipan .qizi').off('click');
+				}
+				return;
+			}
+			kaiguan=false;
+		} else {
+			$(this).addClass('bai');
+			bai[pos.x + '-' + pos.y] = true;
+			if (panduan(pos, bai) >= 5) {
+				console.log('bai ying');
+				$('.qipan .qizi').off('click');
+			}
+
+			kaiguan = true;
+
+		}
+	})
 
 
 	var join=function(n1,n2){
@@ -61,6 +142,12 @@ for (var i = 0; i < 15; i++) {
 			s++;
 			tx++;
 		}
+		tx=pos.x;ty=pos.y;
+		while(biao[join(tx-1,ty+1)]){
+			zx++;
+			tx--;
+			ty++;
+		}
 		//if(s>=5){
 		//	return true;
 		//}
@@ -91,75 +178,11 @@ for (var i = 0; i < 15; i++) {
 
 		return Math.max(h, s, zx, yx);
 	}
-	//加开关
-	var kaiguan=true;
-	var hei={};
-	var bai={};
-	var isAi=true;
-	var ai=function(){
-		var zuobiao;
-		var max=-Infinity;
-		for(var i in kongbai){
-			var weixie=panduan(kongbai[i],hei);
-			if(weixie>max){
-				max=weixie;
-				zuobiao=kongbai[i];
-			}
-		}
-	var zuobiao2;
-		var max2=-Infinity;
-		for(var i in kongbai){
-			var weixie=panduan(kongbai[i],bai);
-			if(weixie>max2){
-				max2=weixie;
-				zuobiao2=kongbai[i];
-			}
-		}
-	return (max>max2)?zuobiao:zuobiao2;
-
-
-	}
 
 
 
-	//给每个棋子添加点击事件
-	$('.qipan .qizi').on('click',function(){
-		//不要让后面的棋子覆盖住以放的棋子
-	if($(this).hasClass('hei')||$(this).hasClass('bai')){
-		return;
-	}
-		var pos=$(this).data('pos');
-		if(kaiguan) {
-			$(this).addClass('hei');
-			hei[pos.x + '-' + pos.y] = true;
-			delete kongbai[join(pos.x, pos.y)];
-			if (panduan(pos, hei) >= 5) {
-				console.log('hei ying');
-				$('.qipan .qizi').off('click');
-			}
-			if (isAi) {
-				var pos = ai();
-				$('#' + join(pos.x, pos.y))
-					.addClass('bai');
-				bai[join(pos.x, pos.y)] = true;
-				delete kongbai[join(pos.x, pos.y)];
-				if (panduan(pos, bai) >= 5) {
-					console.log('baiqi ying');
-					$('.qipan .qizi').off('click');
-				}
-				return;
-			} else {
-				$(this).addClass('bai');
-				bai[pos.x + '-' + pos.y] = true;
-				if (panduan(pos, bai) >= 5) {
-					console.log('bai ying');
-					$('.qipan .qizi').off('click');
-				}
-			}
-			kaiguan = !kaiguan;
 
-			}
-		})
+
 	//重新加载的事件
 	$('.anniu').on('click',function(){
 		location.reload();

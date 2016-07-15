@@ -127,7 +127,8 @@ $width:600px;
   animation:pao 3s linear;
   animation-delay:0.3s;
   animation-fill-mode:forwards;
-  opacity:0
+  opacity:0;
+  font-size: 14px;
 }
 
 .anniu{
@@ -137,7 +138,7 @@ $width:600px;
   z-index: 10;
   color:#fff;
   position: absolute;
-  top:300px;
+  top:250px;
   left:50px;
   text-align:center;
   line-height:40px;
@@ -159,6 +160,72 @@ $width:600px;
     opacity:1;
   }
 }
+.luozi{
+  width: 150px;
+  height:40px;
+  background: rgba(129, 155, 68, 0.51);;
+  z-index: 10;
+  color:#fff;
+  position: absolute;
+  top:320px;
+  right:0px;
+  text-align:center;
+  line-height:40px;
+  border-radius:6px;
+  cursor:pointer;
+  transition:all 0.2s ease;
+  transforme:translateX(100%);
+  animation:zai 2s linear;
+  animation-delay:0.2s;
+  animation-fill-mode:forwards;
+  opacity:0;
+}
+.renji{
+  width: 150px;
+  height:40px;
+  background: rgba(129, 155, 68, 0.51);;
+  z-index: 10;
+  color:#fff;
+  position: absolute;
+  top:320px;
+  left:50px;
+  text-align:center;
+  line-height:40px;
+  border-radius:6px;
+  cursor:pointer;
+  transition:all 0.2s ease;
+  transforme:translateX(100%);
+  animation:zai 2s linear;
+  animation-delay:0.2s;
+  animation-fill-mode:forwards;
+  opacity:0;
+}
+.renren{
+  width: 150px;
+  height:40px;
+  background: rgba(129, 155, 68, 0.51);;
+  z-index: 10;
+  color:#fff;
+  position: absolute;
+  top:380px;
+  left:50px;
+  text-align:center;
+  line-height:40px;
+  border-radius:6px;
+  cursor:pointer;
+  transition:all 0.2s ease;
+  transforme:translateX(100%);
+  animation:zai 2s linear;
+  animation-delay:0.2s;
+  animation-fill-mode:forwards;
+  opacity:0;
+}
+
+
+
+
+
+
 
 
 
