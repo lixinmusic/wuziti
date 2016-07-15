@@ -88,24 +88,7 @@ for (var i = 0; i < 15; i++) {
 			tx++;
 			ty++;
 		}
-		//if(zx>=5){
-		//	return true;
-		//}
-		//tx=pos.x;ty=pos.y;
-		//while(biao[join(tx-1,ty+1)]){
-		//	yx++;
-		//	tx--;
-		//	ty++;
-		//}
-		//tx=pos.x;ty=pos.y;
-		//while(biao[join(tx+1,ty-1)]){
-		//	yx++;
-		//	tx++;
-		//	ty--;
-		//}
-		//if(yx>=5){
-		//	return true;
-		//}
+
 		return Math.max(h, s, zx, yx);
 	}
 	//加开关
@@ -177,6 +160,10 @@ for (var i = 0; i < 15; i++) {
 
 			}
 		})
+	//重新加载的事件
+	$('.anniu').on('click',function(){
+		location.reload();
+	})
 })
 
 

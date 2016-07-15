@@ -198,3 +198,74 @@ body {
 .qipan b:nth-of-type(15) {
   left: 580px;
 }
+
+.jianshao {
+  width: 150px;
+  height: 40px;
+  background: rgba(129, 155, 68, 0.51);
+  z-index: 10;
+  color: #fff;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  transform: translateX(-100%);
+  animation: pao 2s linear;
+  animation-delay: 0.2s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+@keyframes pao {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.jianshao p {
+  transition: all 1s ease;
+  transform: translateX(-100%);
+  animation: pao 3s linear;
+  animation-delay: 0.3s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+.anniu {
+  width: 150px;
+  height: 40px;
+  background: rgba(129, 155, 68, 0.51);
+  z-index: 10;
+  color: #fff;
+  position: absolute;
+  top: 300px;
+  left: 50px;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  transforme: translateX(100%);
+  animation: zai 2s linear;
+  animation-delay: 0.2s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+@keyframes zai {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
